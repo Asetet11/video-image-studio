@@ -1,3 +1,16 @@
+"dependencies": {
+  ...
+  "electron-updater": "^6.1.7"
+},
+"build": {
+  "appId": "com.luna.editor",
+  "productName": "Luna",
+  "publish": [
+    { "provider": "github", "owner": "Asett11", "repo": "video-image-studio" }
+  ],
+
+}
+
 {
   "name": "luna",
   "version": "0.1.0",
@@ -8,7 +21,7 @@
     "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
     "build:renderer": "vite build",
     "prebuild": "node electron/copy-ffmpeg-core.cjs",
-    "installer:win": "npm run build:renderer && electron-builder --win nsis",
+    "installer:win": "npm run build:renderer && electron-builder --win nsis --publish always",
     "icons:gen": "node electron/generate-icons.cjs"
   },
   "dependencies": {
