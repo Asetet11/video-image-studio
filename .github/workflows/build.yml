@@ -11,10 +11,13 @@ permissions:
 jobs:
   build-windows:
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      # WICHTIG: v3 + KEIN cache
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
@@ -44,6 +47,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: luna-windows-installer
-          path: dist/*.exe
-ndows-installer
           path: dist/*.exe
