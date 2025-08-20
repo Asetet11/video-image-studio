@@ -1,16 +1,3 @@
-"dependencies": {
-  ...
-  "electron-updater": "^6.1.7"
-},
-"build": {
-  "appId": "com.luna.editor",
-  "productName": "Luna",
-  "publish": [
-    { "provider": "github", "owner": "Asett11", "repo": "video-image-studio" }
-  ],
-
-}
-
 {
   "name": "luna",
   "version": "0.1.1",
@@ -31,11 +18,13 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "electron-updater": "^6.1.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
     "electron": "^30.0.0",
@@ -46,26 +35,14 @@
     "tailwindcss": "^3.4.9",
     "typescript": "^5.4.5",
     "vite": "^5.2.0",
-    "@vitejs/plugin-react": "^4.3.0",
     "wait-on": "^7.2.0"
   },
   "build": {
     "appId": "com.luna.editor",
     "productName": "Luna",
-    "directories": {
-      "buildResources": "build"
-    },
-    "files": [
-      "dist/**",
-      "electron/**",
-      "package.json",
-      "public/**"
-    ],
-    "asarUnpack": [
-      "**/*.wasm",
-      "**/*.worker.js",
-      "**/ffmpeg-core*"
-    ],
+    "directories": { "buildResources": "build" },
+    "files": ["dist/**", "electron/**", "package.json", "public/**"],
+    "asarUnpack": ["**/*.wasm", "**/*.worker.js", "**/ffmpeg-core*"],
     "artifactName": "Luna-Setup-${version}.exe",
     "win": {
       "target": "nsis",
@@ -82,21 +59,15 @@
     "mac": {
       "category": "public.app-category.video",
       "icon": "build/icon.icns",
-      "target": [
-        "dmg"
-      ]
+      "target": ["dmg"]
     },
     "linux": {
-      "target": [
-        "AppImage"
-      ],
+      "target": ["AppImage"],
       "category": "Video",
       "icon": "build/icon.png"
     },
     "publish": [
-      {
-        "provider": "github"
-      }
+      { "provider": "github", "owner": "Asett11", "repo": "video-image-studio" }
     ]
   }
 }
