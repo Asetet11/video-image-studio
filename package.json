@@ -37,37 +37,25 @@
     "vite": "^5.2.0",
     "wait-on": "^7.2.0"
   },
-  "build": {
-    "appId": "com.luna.editor",
-    "productName": "Luna",
-    "directories": { "buildResources": "build" },
-    "files": ["dist/**", "electron/**", "package.json", "public/**"],
-    "asarUnpack": ["**/*.wasm", "**/*.worker.js", "**/ffmpeg-core*"],
-    "artifactName": "Luna-Setup-${version}.exe",
-    "win": {
-      "target": "nsis",
-      "icon": "build/icon.ico",
-      "publisherName": "Luna"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "shortcutName": "Luna"
-    },
-    "mac": {
-      "category": "public.app-category.video",
-      "icon": "build/icon.icns",
-      "target": ["dmg"]
-    },
-    "linux": {
-      "target": ["AppImage"],
-      "category": "Video",
-      "icon": "build/icon.png"
-    },
-    "publish": [
-      { "provider": "github", "owner": "Asett11", "repo": "video-image-studio" }
-    ]
-  }
+ "build": {
+  "appId": "com.luna.editor",
+  "productName": "Luna",
+  "directories": { "buildResources": "build" },
+  "files": ["dist/**", "electron/**", "package.json", "public/**"],
+  "asarUnpack": ["**/*.wasm", "**/*.worker.js", "**/ffmpeg-core*"],
+  "artifactName": "Luna-Setup-${version}.exe",
+  "win": { "target": "nsis", "icon": "build/icon.ico", "publisherName": "Luna" },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Luna"
+  },
+  "mac": { "category": "public.app-category.video", "icon": "build/icon.icns", "target": ["dmg"] },
+  "linux": { "target": ["AppImage"], "category": "Video", "icon": "build/icon.png" },
+
+  "publish": [
+    { "provider": "github", "owner": "Asett11", "repo": "video-image-studio" }
+  ]
 }
