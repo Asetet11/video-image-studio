@@ -17,10 +17,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         shell: bash
 
       - name: Generate icons from art/luna.png
@@ -45,4 +44,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: luna-windows-installer
+          path: dist/*.exe
+ndows-installer
           path: dist/*.exe
