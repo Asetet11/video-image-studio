@@ -1,0 +1,38 @@
+name: Build & Release Luna (Windows)
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+permissions:
+  contents: write
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+        shell: bash
+      - name: Generate icons from art/luna.png
+        run: npm run icons:gen
+        shell: bash
+      - name: Copy ffmpeg core locally
+        run: node electron/copy-ffmpeg-core.cjs
+        shell: bash
+      - name: Build renderer
+        run: npm run build:renderer
+        shell: bash
+      - name: Build Windows NSIS installer and publish to Release
+        run: npx electron-builder --win nsis --publish always
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload installer as artifact (backup)
+        uses: actions/upload-artifact@v4
+        with:
+          name: luna-windows-installer
+          path: dist/*.exe
