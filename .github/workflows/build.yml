@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # WICHTIG: v3 + KEIN cache
+      # Wichtig: v3 und KEIN cache-Input
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -48,3 +48,4 @@ jobs:
         with:
           name: luna-windows-installer
           path: dist/*.exe
+
